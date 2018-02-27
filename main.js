@@ -1,19 +1,21 @@
 
 var dt0 = new Date();
 
-function main() {
+function main(msg) {
     if(++i > 10)
         clearInterval(interval);
     else
-        console.log(i);
+        console.log(msg);
 }
 
 setTimeout(
-    main,
+    function() { main('timeout') },
     1500
 );
 
 var i = 0;
-var interval = setInterval(main, 1000);
+var interval = setInterval(function() { main('interval') }, 1000);
 
-main();
+main('global');
+
+
